@@ -28,7 +28,7 @@ public class IngestionService {
 
 	@EventListener(ApplicationStartedEvent.class)
 	public void ingest() {
-		try (InputStream in = new FileInputStream(new File("./src/docs/text.txt"))) {
+		try (InputStream in = new FileInputStream(new File("docs/text.txt"))) {
 			List<Document> docs = List.of(new Document(new String(in.readAllBytes())));
 			vectorStore.add(docs);
 		} catch (FileNotFoundException e) {
