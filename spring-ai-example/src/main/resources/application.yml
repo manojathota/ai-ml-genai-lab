@@ -1,0 +1,23 @@
+spring: 
+	datasource:
+		url: jdbc:postgresql://localhost:5432/vectordb
+		username: test
+		password: test
+
+ai:
+	openai:
+		api-key: ${GITHUB_TOKEN}
+		base-url: ${MODEL_URL}
+		chat:
+			options:
+				model: ${MODEL_NAME}
+				temperature: 0.2
+		embedding: 
+			options: 
+				model: text-embedding-3-small
+	vectorstore:
+		pgvector:
+			intialize-schema: true
+			index-type: HNSW
+			distance-type: CONSINE_DISTANCE
+			dimensions: 1536
